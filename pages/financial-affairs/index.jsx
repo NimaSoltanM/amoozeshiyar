@@ -1,12 +1,16 @@
 import {
   Button,
   Group,
-  NumberInput,
   Paper,
   Table,
   TextInput,
+  RingProgress,
+  Text,
+  Center,
+  ThemeIcon,
 } from '@mantine/core';
 import { useState } from 'react';
+import { FaCheck } from 'react-icons/fa';
 
 const index = () => {
   const [paidFee, setPaidFee] = useState(1000000);
@@ -64,18 +68,48 @@ const index = () => {
 
   return (
     <>
-      <Paper p='xl'>
-        <Group>
-          <p>مبلغ پدرداخت شده : {paidFee}</p>
-          <p>مبلغ قابل پرداخت : {wantedFee}</p>
-          <p>وضعیت : {paidFee < wantedFee ? 'بدهکار' : 'بستانکار'}</p>
-        </Group>
-        <Group>
-          <TextInput
-            onChange={(event) => setEnteredPrice(event.target.value)}
-            value={enteredPrice}
+      <Paper p='md' mb='xl'>
+        <Group position='apart'>
+          <Group>
+            <p>مبلغ پدرداخت شده : {paidFee}</p>
+            <p>مبلغ قابل پرداخت : {wantedFee}</p>
+            <Text color={paidFee < wantedFee ? 'red' : 'indigo'}>
+              {paidFee < wantedFee ? 'بدهکار' : 'بستانکار'}
+            </Text>
+          </Group>
+          <Group>
+            <TextInput
+              onChange={(event) => setEnteredPrice(event.target.value)}
+              placeholder='قابلی نداره'
+            />
+            <Button variant='outline' color='indigo' onClick={feeHandler}>
+              پرداخت
+            </Button>
+          </Group>
+          <RingProgress
+            roundCaps
+            size={150}
+            thickness={17}
+            label={
+              <Text size='xs' align='center'>
+                {(paidFee / wantedFee) * 100 >= 100 ? (
+                  <Center>
+                    <ThemeIcon
+                      color='indigo'
+                      variant='light'
+                      radius='xl'
+                      size='3.5rem'
+                    >
+                      <FaCheck size={35} />
+                    </ThemeIcon>
+                  </Center>
+                ) : (
+                  'هنوز مونده'
+                )}
+              </Text>
+            }
+            sections={[{ value: (paidFee / wantedFee) * 100, color: 'indigo' }]}
           />
-          <Button onClick={feeHandler}>پرداخت بدهی</Button>
         </Group>
       </Paper>
       <Table striped highlightOnHover>

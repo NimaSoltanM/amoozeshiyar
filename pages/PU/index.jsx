@@ -5,26 +5,99 @@ import {
   Container,
   Group,
   Center,
+  Text,
+  Checkbox,
   Button,
+  Paper,
+  TextInput,
 } from '@mantine/core';
+
+const ItemComponent = ({ data, selected }) => (
+  <Group noWrap>
+    <div style={{ flex: 1 }}>
+      <Text size='sm' weight={500}>
+        {data.label}
+      </Text>
+      <Text size='xs' color='dimmed' weight={400}>
+        استاد : {data.professor}
+      </Text>
+      <Text size='xs' color='dimmed' weight={400}>
+        کد ارائه : {data.code}
+      </Text>
+    </div>
+    <Checkbox
+      checked={selected}
+      onChange={() => {}}
+      tabIndex={-1}
+      sx={{ pointerEvents: 'none' }}
+    />
+  </Group>
+);
 
 export default () => {
   const initialValues = [
     [],
     [
-      { value: 'ریاضی عمومی', label: 'ریاضی عمومی' },
-      { value: 'مهارت های مسئله یابی', label: 'مهارت های مسئله یابی' },
-      { value: 'ترتبیت بدنی', label: 'ترتبیت بدنی' },
-      { value: 'برنامه نویسی سخت افزار', label: 'برنامه نویسی سخت افزار' },
-      { value: 'برنامه نویسی موبایل', label: 'برنامه نویسی موبایل' },
-      { value: 'کارآفرینی', label: 'کارآفرینی' },
-      { value: 'زبان فنی', label: 'زبان فنی' },
-      { value: 'فیزیک پیش نیاز', label: 'فیزیک پیش نیاز' },
+      {
+        value: 'ریاضی عمومی',
+        label: 'ریاضی عمومی',
+        professor: 'محمد محمدی',
+        code: '455',
+        group: 'عمومی',
+      },
+      {
+        value: 'مهارت های مسئله یابی',
+        label: 'مهارت های مسئله یابی',
+        professor: 'یاسر عرفات',
+        code: '455',
+        group: 'عمومی',
+      },
+      {
+        value: 'ترتبیت بدنی',
+        label: 'ترتبیت بدنی',
+        professor: 'مجتبی خاتمی',
+        code: '455',
+        group: 'عمومی',
+      },
+      {
+        value: 'برنامه نویسی سخت افزار',
+        label: 'برنامه نویسی سخت افزار',
+        professor: 'محمد رضایی',
+        code: '455',
+        group: 'تخصصی',
+      },
+      {
+        value: 'برنامه نویسی موبایل',
+        label: 'برنامه نویسی موبایل',
+        professor: 'نیما همدانی',
+        code: '455',
+        group: 'تخصصی',
+      },
+      {
+        value: 'کارآفرینی',
+        label: 'کارآفرینی',
+        professor: 'ابراهیم غلامی',
+        code: '455',
+        group: 'عمومی',
+      },
+      {
+        value: 'زبان فنی',
+        label: 'زبان فنی',
+        professor: 'حسین روحانی',
+        code: '455',
+        group: 'تخصصی',
+      },
+      {
+        value: 'فیزیک پیش نیاز',
+        label: 'فیزیک پیش نیاز',
+        professor: 'محمود احمدی زاده',
+        code: '455',
+        group: 'عمومی',
+      },
     ],
   ];
 
   const [data, setData] = useState(initialValues);
-  const [showDetails, setShowDetails] = useState(false);
 
   return (
     <>
@@ -35,32 +108,9 @@ export default () => {
         nothingFound='لیست خالی است'
         titles={['درس های انتخاب شده', 'درس های موجود']}
         breakpoint='sm'
+        itemComponent={ItemComponent}
+        listHeight={400}
       />
-
-      <Container>
-        <Center>
-          <Button onClick={() => setShowDetails(!showDetails)} mt='xl'>
-            {showDetails ? 'مخفی کردن جزئیات دروس' : 'نشان دادن جزئیات دروس'}
-          </Button>
-        </Center>
-        {showDetails ? (
-          <Accordion variant='separated' mt='xl'>
-            {initialValues[1].map((value) => (
-              <Accordion.Item value={value.value}>
-                <Accordion.Control>{value.label}</Accordion.Control>
-                <Accordion.Panel>
-                  <Group>
-                    <p>استاد : رضا رضایی</p>
-                    <p>کد ارائه : 556</p>
-                  </Group>
-                </Accordion.Panel>
-              </Accordion.Item>
-            ))}
-          </Accordion>
-        ) : (
-          ''
-        )}
-      </Container>
     </>
   );
 };

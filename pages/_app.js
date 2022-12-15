@@ -1,8 +1,14 @@
 import Head from 'next/head';
-import { MantineProvider, createEmotionCache } from '@mantine/core';
+import {
+  MantineProvider,
+  createEmotionCache,
+  ColorSchemeProvider,
+  ColorScheme,
+} from '@mantine/core';
 import Layout from '../components/ui/Layout';
 import '../styles/globals.css';
 import rtlPlugin from 'stylis-plugin-rtl';
+import { useState } from 'react';
 
 const rtlCache = createEmotionCache({
   key: 'mantine-rtl',
@@ -11,6 +17,10 @@ const rtlCache = createEmotionCache({
 
 export default function App(props) {
   const { Component, pageProps } = props;
+
+  const [colorScheme, setColorScheme] = useState('light');
+  const toggleColorScheme = (value) =>
+    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
 
   return (
     <>
@@ -22,19 +32,24 @@ export default function App(props) {
         />
       </Head>
 
-      <MantineProvider
-        withGlobalStyles
-        withNormalizeCSS
-        emotionCache={rtlCache}
-        theme={{
-          colorScheme: 'dark',
-          dir: 'rtl',
-        }}
+      <ColorSchemeProvider
+        colorScheme={colorScheme}
+        toggleColorScheme={toggleColorScheme}
       >
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </MantineProvider>
+        <MantineProvider
+          withGlobalStyles
+          withNormalizeCSS
+          emotionCache={rtlCache}
+          theme={{
+            colorScheme,
+            dir: 'rtl',
+          }}
+        >
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </MantineProvider>
+      </ColorSchemeProvider>
     </>
   );
 }

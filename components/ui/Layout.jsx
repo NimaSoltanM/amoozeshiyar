@@ -21,6 +21,8 @@ import {
   TextInput,
   PasswordInput,
   Button,
+  useMantineColorScheme,
+  Group,
 } from '@mantine/core';
 import Link from 'next/link';
 import { useForm } from '@mantine/form';
@@ -35,6 +37,8 @@ import {
   FaSignOutAlt,
   FaShoppingCart,
   FaInfo,
+  FaRegMoon,
+  FaRegSun,
 } from 'react-icons/fa';
 
 export default function AppShellDemo({ children }) {
@@ -74,6 +78,10 @@ export default function AppShellDemo({ children }) {
       alert('مثلا وارد شدی');
     }
   };
+
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const dark = colorScheme === 'dark';
+
   return (
     <AppShell
       styles={{
@@ -152,32 +160,43 @@ export default function AppShellDemo({ children }) {
 
             <h3>دانشگاه سما</h3>
 
-            <Menu
-              transition='rotate-right'
-              transitionDuration={150}
-              position='right'
-              withArrow
-            >
-              <Menu.Target>
-                <ActionIcon variant='outline'>
-                  <FaUserAlt size={16} />
-                </ActionIcon>
-              </Menu.Target>
+            <Group>
+              <ActionIcon
+                variant='outline'
+                color={dark ? 'yellow' : 'blue'}
+                onClick={() => toggleColorScheme()}
+                title='تغییر تم صقحه'
+              >
+                {dark ? <FaRegSun size={18} /> : <FaRegMoon size={18} />}
+              </ActionIcon>
 
-              <Menu.Dropdown>
-                <Menu.Item onClick={clickHandler} icon={<FaInfo size={14} />}>
-                  مشخصات شما
-                </Menu.Item>
-                <Menu.Divider />
-                <Menu.Item
-                  onClick={drawerHandler}
-                  icon={<FaSignOutAlt size={14} />}
-                  color='red'
-                >
-                  خروج
-                </Menu.Item>
-              </Menu.Dropdown>
-            </Menu>
+              <Menu
+                transition='rotate-right'
+                transitionDuration={150}
+                position='right'
+                withArrow
+              >
+                <Menu.Target>
+                  <ActionIcon variant='outline'>
+                    <FaUserAlt size={16} />
+                  </ActionIcon>
+                </Menu.Target>
+
+                <Menu.Dropdown>
+                  <Menu.Item onClick={clickHandler} icon={<FaInfo size={14} />}>
+                    مشخصات شما
+                  </Menu.Item>
+                  <Menu.Divider />
+                  <Menu.Item
+                    onClick={drawerHandler}
+                    icon={<FaSignOutAlt size={14} />}
+                    color='red'
+                  >
+                    خروج
+                  </Menu.Item>
+                </Menu.Dropdown>
+              </Menu>
+            </Group>
           </div>
         </Header>
       }

@@ -7,7 +7,6 @@ import {
   MediaQuery,
   Burger,
   useMantineTheme,
-  NavLink,
   Avatar,
   Divider,
   Box,
@@ -24,27 +23,20 @@ import {
   useMantineColorScheme,
   Group,
 } from '@mantine/core';
-import Link from 'next/link';
 import { useForm } from '@mantine/form';
 
-import { useRouter } from 'next/router';
-
 import {
-  FaHome,
-  FaChevronLeft,
-  FaMoneyBillAlt,
   FaUserAlt,
   FaSignOutAlt,
-  FaShoppingCart,
   FaInfo,
   FaRegMoon,
   FaRegSun,
 } from 'react-icons/fa';
+import NavItems from '../Layout/navItems';
 
 export default function AppShellDemo({ children }) {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
-  const router = useRouter();
   const [openedModal, setOpenedModal] = useState(false);
   const [openedDrawer, setOpenedDrawer] = useState(false);
 
@@ -73,7 +65,7 @@ export default function AppShellDemo({ children }) {
     },
   });
 
-  const submitHandler = (values) => {
+  const submitHandler = () => {
     if (form.isValid) {
       alert('مثلا وارد شدی');
     }
@@ -101,36 +93,7 @@ export default function AppShellDemo({ children }) {
           hidden={!opened}
           width={{ sm: 150, lg: 250 }}
         >
-          <Link href='/'>
-            <NavLink
-              label='خانه'
-              icon={<FaHome size={20} stroke={1.5} />}
-              rightSection={<FaChevronLeft size={15} stroke={1.5} />}
-              variant='light'
-              active={router.pathname === '/'}
-              mb='sm'
-            />
-          </Link>
-          <Link href='/financial-affairs'>
-            <NavLink
-              label='امور مالی'
-              icon={<FaMoneyBillAlt size={20} stroke={1.5} />}
-              rightSection={<FaChevronLeft size={15} stroke={1.5} />}
-              variant='light'
-              active={router.pathname === '/financial-affairs'}
-              mb='sm'
-            />
-          </Link>
-          <Link href='/PU'>
-            <NavLink
-              label='انتخاب واحد'
-              icon={<FaShoppingCart size={20} stroke={1.5} />}
-              rightSection={<FaChevronLeft size={15} stroke={1.5} />}
-              variant='light'
-              active={router.pathname === '/PU'}
-              mb='sm'
-            />
-          </Link>
+          <NavItems />
         </Navbar>
       }
       header={

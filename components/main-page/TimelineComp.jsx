@@ -6,11 +6,11 @@ import { MdOutlinePendingActions } from 'react-icons/md';
 const TimelineComp = () => {
   return (
     <Paper p='lg' shadow='xl'>
-      <Timeline active={2} bulletSize={24} lineWidth={2} color='blue'>
+      <Timeline active={2} bulletSize={24} lineWidth={2} color='indigo'>
         <Timeline.Item bullet={<FaCheck size={12} />} title='ترم 1'>
           <Text size='sm'>
             با معدل{' '}
-            <Text component='span' color='blue'>
+            <Text component='span' color='indigo'>
               19.20
             </Text>{' '}
             به پایان رسید
@@ -23,7 +23,7 @@ const TimelineComp = () => {
         <Timeline.Item bullet={<FaCheck size={12} />} title='ترم 2'>
           <Text size='sm'>
             با معدل{' '}
-            <Text component='span' color='blue'>
+            <Text component='span' color='indigo'>
               17.75
             </Text>{' '}
             به پایان رسید
@@ -40,7 +40,7 @@ const TimelineComp = () => {
         >
           <Text size='sm'>
             با معدل{' '}
-            <Text component='span' color='blue'>
+            <Text component='span' color='indigo'>
               18.10
             </Text>{' '}
             به پایان رسید

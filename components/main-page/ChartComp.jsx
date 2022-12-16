@@ -16,7 +16,7 @@ const data = [
 const ChartComp = () => {
   return (
     <Paper p='sm' shadow='xl'>
-      <LineChart width={600} height={324} data={data}>
+      <LineChart width={614} height={324} data={data}>
         <Line type='monotone' dataKey='score' stroke='#8884d8' />
         <CartesianGrid stroke='#ccc' strokeDasharray='5 5' />
         <XAxis dataKey='name' />

@@ -32,7 +32,7 @@ import {
   FaRegMoon,
   FaRegSun,
 } from 'react-icons/fa';
-import NavItems from '../Layout/navItems';
+import NavItems from '../Layout/NavItems';
 
 export default function AppShellDemo({ children }) {
   const theme = useMantineTheme();

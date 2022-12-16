@@ -80,7 +80,7 @@ const index = () => {
           <Group>
             <TextInput
               onChange={(event) => setEnteredPrice(event.target.value)}
-              placeholder='قابلی نداره'
+              placeholder={wantedFee - paidFee}
             />
             <Button variant='outline' color='indigo' onClick={feeHandler}>
               پرداخت

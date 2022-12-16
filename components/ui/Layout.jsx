@@ -22,6 +22,7 @@ import {
   Button,
   useMantineColorScheme,
   Group,
+  Text,
 } from '@mantine/core';
 import { useForm } from '@mantine/form';
 
@@ -95,6 +96,21 @@ export default function AppShellDemo({ children }) {
         >
           <NavItems />
         </Navbar>
+      }
+      footer={
+        <Footer height={60} p='md'>
+          <Center>
+            <Text
+              variant='gradient'
+              gradient={{ from: 'indigo', to: 'cyan', deg: 45 }}
+              sx={{ fontFamily: 'Greycliff CF, sans-serif' }}
+              ta='center'
+              fz='md'
+            >
+              &copy; 2022 NimaSoltan | All rights reserved
+            </Text>
+          </Center>
+        </Footer>
       }
       header={
         <Header height={{ base: 50, md: 70 }} p='md'>

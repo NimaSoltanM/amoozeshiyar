@@ -35,8 +35,6 @@ export default function Home() {
           <Assignments />
         </Grid.Col>
       </Grid>
-
-      <h1>hell</h1>
     </>
   );
 }

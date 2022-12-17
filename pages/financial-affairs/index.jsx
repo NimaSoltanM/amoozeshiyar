@@ -86,7 +86,7 @@ const index = () => {
       <Paper p='md' mb='xl'>
         <Group position='apart'>
           <Group>
-            <p>مبلغ پدرداخت شده : {commafy(paidFee)}</p>
+            <p>مبلغ پرداخت شده : {commafy(paidFee)}</p>
             <p>مبلغ قابل پرداخت : {commafy(wantedFee)}</p>
             <Text color={paidFee < wantedFee ? 'red' : 'indigo'}>
               {paidFee < wantedFee ? 'بدهکار' : 'بستانکار'}

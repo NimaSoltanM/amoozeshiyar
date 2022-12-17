@@ -42,8 +42,8 @@ export default () => {
         group: 'عمومی',
       },
       {
-        value: 'ترتبیت بدنی',
-        label: 'ترتبیت بدنی',
+        value: 'تربیت بدنی',
+        label: 'تربیت بدنی',
         professor: 'مجتبی خاتمی',
         code: '455',
         group: 'عمومی',

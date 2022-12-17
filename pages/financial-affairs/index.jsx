@@ -66,13 +66,24 @@ const index = () => {
     setPaidFee((paidFee) => (paidFee += +enteredPrice));
   };
 
+  function commafy(num) {
+    var str = num.toString().split('.');
+    if (str[0].length >= 5) {
+      str[0] = str[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+    }
+    if (str[1] && str[1].length >= 5) {
+      str[1] = str[1].replace(/(\d{3})/g, '$1 ');
+    }
+    return str.join('.');
+  }
+
   return (
     <>
       <Paper p='md' mb='xl'>
         <Group position='apart'>
           <Group>
-            <p>مبلغ پدرداخت شده : {paidFee}</p>
-            <p>مبلغ قابل پرداخت : {wantedFee}</p>
+            <p>مبلغ پدرداخت شده : {commafy(paidFee)}</p>
+            <p>مبلغ قابل پرداخت : {commafy(wantedFee)}</p>
             <Text color={paidFee < wantedFee ? 'red' : 'indigo'}>
               {paidFee < wantedFee ? 'بدهکار' : 'بستانکار'}
             </Text>
@@ -104,7 +115,7 @@ const index = () => {
                     </ThemeIcon>
                   </Center>
                 ) : (
-                  'هنوز مونده'
+                  (paidFee / wantedFee) * 100 + '%'
                 )}
               </Text>
             }

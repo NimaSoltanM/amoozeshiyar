@@ -98,14 +98,14 @@ export default function AppShellDemo({ children }) {
         </Navbar>
       }
       footer={
-        <Footer height={60} p='md'>
+        <Footer height={40} p='md'>
           <Center>
             <Text
               variant='gradient'
               gradient={{ from: 'indigo', to: 'cyan', deg: 45 }}
               sx={{ fontFamily: 'Greycliff CF, sans-serif' }}
               ta='center'
-              fz='md'
+              fz='sm'
             >
               &copy; 2022 NimaSoltan | All rights reserved
             </Text>

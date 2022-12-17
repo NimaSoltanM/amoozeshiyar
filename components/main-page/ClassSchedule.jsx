@@ -42,7 +42,7 @@ const ClassSchedule = () => {
       <Divider mb='xl' />
       <Box>
         {scheduleData.map((schedule) => (
-          <Group spacing='xs' mb='xl'>
+          <Group spacing='xs' mb='xl' key={schedule.badgeColor}>
             <Flex
               mih={50}
               gap='0'

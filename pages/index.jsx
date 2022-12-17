@@ -4,6 +4,7 @@ import Assignments from '../components/main-page/Assignments';
 import ChartComp from '../components/main-page/ChartComp';
 import ClassSchedule from '../components/main-page/ClassSchedule';
 import TimelineComp from '../components/main-page/TimelineComp';
+import Unknown from '../components/main-page/Unknown';
 
 export default function Home() {
   return (
@@ -34,7 +35,18 @@ export default function Home() {
         <Grid.Col sm={12} md={4}>
           <Assignments />
         </Grid.Col>
+        <Grid.Col sm={12} md={4}>
+          <Unknown />
+        </Grid.Col>
       </Grid>
+
+      <Divider
+        mb='xl'
+        mt='xl'
+        label='اعلانات'
+        labelPosition='center'
+        size='md'
+      />
     </>
   );
 }

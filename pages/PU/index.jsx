@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { TransferList, Group, Text, Checkbox } from '@mantine/core';
+import Head from 'next/head';
 
 const ItemComponent = ({ data, selected }) => (
   <Group noWrap>
@@ -89,15 +90,20 @@ export default () => {
   const [data, setData] = useState(initialValues);
 
   return (
-    <TransferList
-      value={data}
-      onChange={setData}
-      searchPlaceholder='جستجو ...'
-      nothingFound='لیست خالی است'
-      titles={['درس های موجود', 'درس های انتخاب شده']}
-      breakpoint='sm'
-      itemComponent={ItemComponent}
-      listHeight={400}
-    />
+    <>
+      <Head>
+        <title>انتخاب واحد</title>
+      </Head>
+      <TransferList
+        value={data}
+        onChange={setData}
+        searchPlaceholder='جستجو ...'
+        nothingFound='لیست خالی است'
+        titles={['درس های موجود', 'درس های انتخاب شده']}
+        breakpoint='sm'
+        itemComponent={ItemComponent}
+        listHeight={400}
+      />
+    </>
   );
 };

@@ -6,10 +6,15 @@ import ClassSchedule from '../components/main-page/ClassSchedule';
 import NotifsComp from '../components/main-page/NotifsComp';
 import TimelineComp from '../components/main-page/TimelineComp';
 import Unknown from '../components/main-page/Unknown';
+import Head from 'next/head';
 
 export default function Home() {
   return (
     <>
+      <Head>
+        <title>صفحه اصلی</title>
+        <meta name='viewport' content='initial-scale=1.0, width=device-width' />
+      </Head>
       <Divider
         mb='xl'
         label='آخرین وضعیت تحصیلی'

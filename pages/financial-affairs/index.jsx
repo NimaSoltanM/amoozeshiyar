@@ -9,6 +9,7 @@ import {
   Center,
   ThemeIcon,
 } from '@mantine/core';
+import Head from 'next/head';
 import { useState } from 'react';
 import { FaCheck } from 'react-icons/fa';
 
@@ -79,6 +80,9 @@ const index = () => {
 
   return (
     <>
+      <Head>
+        <title>امور مالی</title>
+      </Head>
       <Paper p='md' mb='xl'>
         <Group position='apart'>
           <Group>

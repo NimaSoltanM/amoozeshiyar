@@ -3,6 +3,7 @@ import Assignments from '../components/main-page/Assignments';
 
 import ChartComp from '../components/main-page/ChartComp';
 import ClassSchedule from '../components/main-page/ClassSchedule';
+import NotifsComp from '../components/main-page/NotifsComp';
 import TimelineComp from '../components/main-page/TimelineComp';
 import Unknown from '../components/main-page/Unknown';
 
@@ -47,6 +48,8 @@ export default function Home() {
         labelPosition='center'
         size='md'
       />
+
+      <NotifsComp />
     </>
   );
 }

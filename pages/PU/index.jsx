@@ -36,7 +36,7 @@ export default () => {
       {
         value: 'مهارت های مسئله یابی',
         label: 'مهارت های مسئله یابی',
-        professor: 'یاسر عرفات',
+        professor: 'محسن رضایی',
         code: '455',
         group: 'عمومی',
       },
